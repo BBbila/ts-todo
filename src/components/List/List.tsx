@@ -1,4 +1,5 @@
 import React  from "react";
+import {ItemProps} from "../../page/index/index";
 import { CloseCircleOutlined ,FolderViewOutlined } from '@ant-design/icons';
 
 const styles = {
@@ -12,11 +13,28 @@ const styles = {
 }
 
 interface IProps  {
-    list : Array<string>;
-    isShowView: boolean
+    list : Array<string>,
+    haveViewlist: Array<string>,
+    isShowView: boolean,
+    setAddList: (param: string[]) => void,
+    setHaveViewlist: (param: string[]) => void
 }
 
 const List = (props: IProps) => {
+
+    // //已读
+    // const handleClickViewBtn = (item: any, index: number) =>{
+    //     setHaveViewlist([...props.haveViewlist, item]);
+    //     props.list.splice(index,1);
+    //     setAddList([...props.list]);
+    // }
+
+    // //删除
+    // const handleClickCancleBtn = (index: number) =>{
+    //     props.list.splice(index,1);
+    //     setAddList([...props.list]);
+    // }
+
 
     return (
         <div className="ListPageWrap" style={styles.ListPageWrap}>
@@ -25,12 +43,12 @@ const List = (props: IProps) => {
                     return <li key={index}>{item}
                     {props.isShowView &&
                     <FolderViewOutlined 
-                        style={{position:'absolute',right:'30px',top:'0',color:'blue'}} 
+                        style={{position:'absolute',right:'80px',top:'0',color:'blue'}} 
                         // onClick={() => {handleClickViewBtn(item ,index)}}
                     />
                 }
                 <CloseCircleOutlined 
-                    style={{position:'absolute',right:'0',top:'0',color:'red'}} 
+                    style={{position:'absolute',right:'50px',top:'0',color:'red'}} 
                     // onClick={() => {handleClickCancleBtn(index)}}
                 />
                 </li>;

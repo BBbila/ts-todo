@@ -1,44 +1,43 @@
 import React, {useState} from "react";
 import {Toast} from 'antd-mobile'
+import styles from './index.module.scss';
 import List from '../../components/List/List';
 
 export interface ItemProps {
-    id: number;
+    index: number;
     content: string;
 }
 
 const Index = () => {
-
   const [val, setVal] = useState('');
-  const [addlist, setAddList] = useState<ItemProps[]>([]);
-
-  const [haveViewlist, setHaveViewlist] = useState([]);
+  const [addlist, setAddList] = useState<string[]>([]);
+  const [haveViewlist, setHaveViewlist] = useState<string[]>([]);
   const [isShowView, setIsShowView] = useState(true);
 
   
   //输入监听
-//   const handleVal = (e) =>{
-//     const _val = e.target.value;
-//     setVal(_val);
-//   }
+  const handleVal = (e: any) =>{
+    const _val = e.target.value;
+    setVal(_val);
+  }
 
   //添加
-//   const handleClickAddBtn = (e) =>{
-//     if(val !== null && val !== "") {
-//       setAddList([...addlist,val]);
-//     }else {
-//       Toast.info('内容不能为空!');
-//     }
-//     setVal('');
-//   }
+  const handleClickAddBtn = () =>{
+    if(val !== null && val !== "") {
+      setAddList([...addlist, val]);
+    }else {
+      Toast.info('内容不能为空!');
+    }
+    setVal('');
+  }
 
   return (
     <div className={styles.indexPageWrap}>
         <div className="headerCon">TodoList</div>
         <article className="contentCon">
           <div className="content">
-            <input value={val} onChange={(e) => handleVal(e)} style={{width:'89%'}}></input>
-            <button onClick={() => {handleClickAddBtn()}}>添加</button>
+            <input value={val} onChange={(e) => handleVal(e)} style={{width:'85%',height:'30px'}}></input>
+            <button onClick={() => {handleClickAddBtn()}} style={{height:'36px'}}>添加</button>
             <h3>全部</h3>
             <List 
               list={addlist}
@@ -46,14 +45,13 @@ const Index = () => {
               isShowView={isShowView}
               haveViewlist = {haveViewlist}
               setHaveViewlist = {setHaveViewlist}
-              setIsShowView = {setIsShowView}
             ></List>
             <h3>已读</h3>
-            <List 
+            {/* <List 
               list={haveViewlist}
               setAddList={setHaveViewlist} 
               isShowView={false}
-            ></List>
+            ></List> */}
           </div>
         </article>
     </div>
