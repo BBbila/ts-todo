@@ -1,5 +1,4 @@
 import React, {useState} from "react";
-import {Toast} from 'antd-mobile'
 import styles from './index.module.scss';
 import List from '../../components/List/List';
 
@@ -16,8 +15,8 @@ const Index = () => {
 
   
   //输入监听
-  const handleVal = (e: any) =>{
-    const _val = e.target.value;
+  const handleVal = (e: React.ChangeEvent) =>{
+    const _val =  (e.target as HTMLInputElement).value;
     setVal(_val);
   }
 
@@ -26,7 +25,7 @@ const Index = () => {
     if(val !== null && val !== "") {
       setAddList([...addlist, val]);
     }else {
-      Toast.info('内容不能为空!');
+      alert('内容不能为空!');
     }
     setVal('');
   }
@@ -47,11 +46,11 @@ const Index = () => {
               setHaveViewlist = {setHaveViewlist}
             ></List>
             <h3>已读</h3>
-            {/* <List 
+            <List 
               list={haveViewlist}
               setAddList={setHaveViewlist} 
               isShowView={false}
-            ></List> */}
+            />
           </div>
         </article>
     </div>

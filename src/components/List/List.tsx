@@ -14,26 +14,28 @@ const styles = {
 
 interface IProps  {
     list : Array<string>,
-    haveViewlist: Array<string>,
+    haveViewlist?: Array<string>,
     isShowView: boolean,
     setAddList: (param: string[]) => void,
-    setHaveViewlist: (param: string[]) => void
+    setHaveViewlist?: (param: string[]) => void
 }
 
 const List = (props: IProps) => {
 
-    // //已读
-    // const handleClickViewBtn = (item: any, index: number) =>{
-    //     setHaveViewlist([...props.haveViewlist, item]);
-    //     props.list.splice(index,1);
-    //     setAddList([...props.list]);
-    // }
+    //已读
+    const handleClickViewBtn = (item: string, index: number) =>{
+        if(props.setHaveViewlist && props.haveViewlist) {
+            props.setHaveViewlist([...props.haveViewlist, item]);
+        }
+        props.list.splice(index,1);
+        props.setAddList([...props.list]);
+    }
 
-    // //删除
-    // const handleClickCancleBtn = (index: number) =>{
-    //     props.list.splice(index,1);
-    //     setAddList([...props.list]);
-    // }
+    //删除
+    const handleClickCancleBtn = (index: number) =>{
+        props.list.splice(index,1);
+        props.setAddList([...props.list]);
+    }
 
 
     return (
@@ -44,12 +46,12 @@ const List = (props: IProps) => {
                     {props.isShowView &&
                     <FolderViewOutlined 
                         style={{position:'absolute',right:'80px',top:'0',color:'blue'}} 
-                        // onClick={() => {handleClickViewBtn(item ,index)}}
+                        onClick={() => {handleClickViewBtn(item ,index)}}
                     />
                 }
                 <CloseCircleOutlined 
                     style={{position:'absolute',right:'50px',top:'0',color:'red'}} 
-                    // onClick={() => {handleClickCancleBtn(index)}}
+                    onClick={() => {handleClickCancleBtn(index)}}
                 />
                 </li>;
                 })}
