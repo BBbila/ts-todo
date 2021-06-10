@@ -18,8 +18,8 @@ const AppIndex = () => {
                 </div>
                 <div className="flex_center btn_center">
                     <article className="btn_Con">
-                        <button className=""  ><img src={pg_app} className="sm_icon"></img>Windows版下载</button>
-                        <button className=""  ><img src={andro_app} className="sm_icon"></img>mac版下载</button>
+                        <button className=""  ><img src={andro_app} className="sm_icon"></img>ipone版下载</button>
+                        <button className=""  ><img src={pg_app} className="sm_icon"></img>Android版下载</button>
                     </article>
                 </div>
             </div>

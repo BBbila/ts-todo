@@ -6,6 +6,10 @@ import winbalck from '../../lib/image/windows_black.png';
 import appleblack from '../../lib/image/apple_black.png';
 import winwhite from '../../lib/image/windows_white.png';
 import applewhite from '../../lib/image/apple_white.png';
+import ques from '../../lib/image/ques.png';
+
+
+
 
 const AndriodURL = "https://api.pwmqr.com/qrcode/create/?url=http%3A%2F%2Fupdate.realmerit.com.cn%2Frealmerit_release_2.17.5.apk";
 const iosURL = "https://api.pwmqr.com/qrcode/create/?url=https://itunes.apple.com/cn/app/id1489291760";
@@ -44,6 +48,7 @@ const IndexPage = () => {
                         <img src={iosURL} className="gimg"></img>
                     </div>
                 </article>
+                <div className="des_Con"><span>系统依赖（Windows）</span><a className="down_link" href="http://setup.realmerit.com.cn/NDP472-KB4054530-x86-x64-AllOS-ENU.exe">.NET Framework4.7.2</a><img src={ques} className="ques_icon"></img></div>
             </div>
         </div>
     );
