@@ -1,3 +1,4 @@
+
 .indexPage_Wrap {
     height: auto;
     padding: 0;
@@ -49,12 +50,6 @@
                     display: flex;
                     height: 60px;
                     justify-content: space-between;
-                    .sm_icon {
-                        width: 24px;
-                        height: 24px;
-                        line-height: 60px;
-                        margin-right: 10px;
-                    }
                     button {
                         border: none;
                         outline: none;
@@ -69,10 +64,40 @@
                         box-shadow: 0px 8px 20px 0px rgba(28, 96, 121, 0.1);
                         background: #FFF;
                         position: relative;
-                    }
-                    .selected_btn {
-                        background: #1A293C;
-                        color:#FFF;
+                        display: flex;
+                        align-items: center;
+                        .sm_icon {
+                            display: inline-block;
+                            width: 24px;
+                            height: 24px;
+                            margin-right: 10px;
+                            margin-left: 20px;
+                        }
+                        &:hover {
+                            background: #1A293C;
+                            color:#FFF;
+                            .winbalck {
+                                background-image: url(../../lib/image/windows_white.png);
+                            }
+                            .appleblack {
+                                background-image: url(../../lib/image/apple_white.png);
+                            }
+                            .adblack {
+                                background-image: url(../../lib/image/ad_white.png);
+                            }
+                        }
+                        .winbalck {
+                            background-image: url(../../lib/image/windows_black.png);
+                        }
+                        .appleblack {
+                            background-image: url(../../lib/image/apple_black.png);
+                        }
+                        .adblack {
+                            background-image: url(../../lib/image/ad_balck.png);
+                        }
+                        .apd {
+                            margin-right: 20px;
+                        }
                     }
                     .andriod_btn_Con {
                         .pop_ad_Con {
@@ -82,7 +107,6 @@
                             left: 0px;
                             z-index: 999;
                         }
-                      
                         &:hover {
                             .pop_ad_Con {
                                 display: block;
