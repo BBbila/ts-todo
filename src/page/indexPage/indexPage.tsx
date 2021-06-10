@@ -9,9 +9,13 @@ import logo_app from '../../lib/image/logo_app.png';
 import andro_app from '../../lib/image/andro_app.png';
 import pg_app from '../../lib/image/pg_app.png';
 
-
 const AndriodURL = "https://api.pwmqr.com/qrcode/create/?url=http%3A%2F%2Fupdate.realmerit.com.cn%2Frealmerit_release_2.17.5.apk";
 const iosURL = "https://api.pwmqr.com/qrcode/create/?url=https://itunes.apple.com/cn/app/id1489291760";
+const WindowsURL = "http://setup.realmerit.com.cn/setup-win32.exe?t="
+const MACURL = "http://setup.realmerit.com.cn/setup-mac.dmg?t="
+const appAndriodURL = "http://update.realmerit.com.cn/realmerit_release_2.17.5.apk";
+
+
 
 const IndexPage = () => {
     const [isPcState , setIsPcState] = useState<boolean>(true);
@@ -24,7 +28,7 @@ const IndexPage = () => {
         }else {
             setIsPcState(false);
         }
-      },[])
+    },[])
 
     const jugeBrower =() => {
         var sUserAgent: any = navigator.userAgent.toLowerCase();
@@ -43,6 +47,19 @@ const IndexPage = () => {
         }
     }
 
+    //下载监听事件--PC端
+    const handleLinkTo = (url : string) => {
+        let localTimestamp: number = new Date().getTime();
+        window.location.href = url + localTimestamp;
+    }
+
+    //下载监听事件--移动端
+    const handleLinkDownload = (url : string) => {
+        window.location.href = url ;
+    }
+
+    
+
     if(isPcState){
         return  <div className={styles.indexPage_Wrap}>
             <div className="backg_Wrap">
@@ -50,8 +67,8 @@ const IndexPage = () => {
                 <div className="title_Con"><img src={thetitle} className="gimg"></img></div>
                 <article className="btn_Con">
                     <div className="row_btn_Con">
-                    <button><div className="sm_icon winbalck "></div>Windows版下载</button>
-                    <button><div className="sm_icon appleblack apd"></div>mac版下载</button>
+                    <button onClick={()=>{handleLinkTo(WindowsURL)}}><div className="sm_icon winbalck "></div>Windows版下载</button>
+                    <button onClick={()=>{handleLinkTo(MACURL)}}><div className="sm_icon appleblack apd"></div>mac版下载</button>
                     </div>
                     <div className="row_btn_Con">
                         <div className="andriod_btn_Con">
@@ -62,7 +79,7 @@ const IndexPage = () => {
                             </div>
                         </div>
                         <div className="ios_btn_Con">
-                            <button><div className="sm_icon appleblack"></div>ipone版下载</button>
+                            <button><div className="sm_icon appleblack"></div>iphone版下载</button>
                             <div className="pop pop_ios_Con">
                                 <div className="cube"></div>
                                 <img src={iosURL} className="gimg"></img>
@@ -96,8 +113,8 @@ const IndexPage = () => {
             </div>
             <div className="flex_center btn_center">
                 <article className="btn_Con">
-                    <button className=""  ><img src={andro_app} className="sm_icon"></img>ipone版下载</button>
-                    <button className=""  ><img src={pg_app} className="sm_icon"></img>Android版下载</button>
+                    <button onClick={()=>{handleLinkDownload(iosURL)}} ><img src={andro_app} className="sm_icon"></img>iphone版下载</button>
+                    <button onClick={()=>{handleLinkDownload(appAndriodURL)}} ><img src={pg_app} className="sm_icon"></img>Android版下载</button>
                 </article>
             </div>
         </div>
