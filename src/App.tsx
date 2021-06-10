@@ -20,7 +20,7 @@ function App() {
           <Route
             exact
             path={`${CONTEXT}/`}
-            render={() => <Redirect to={`${CONTEXT}/index`}></Redirect>}
+            render={() => <Redirect to={`${CONTEXT}/indexpage`}></Redirect>}
           ></Route>
           <Route exact path={`${CONTEXT}/index`} component={Index} />
           <Route exact path={`${CONTEXT}/indexpage`} component={IndexPage} />

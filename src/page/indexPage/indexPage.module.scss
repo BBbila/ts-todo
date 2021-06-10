@@ -4,7 +4,6 @@
     margin: 0;
     border: 0;
     position: absolute;
-    z-index:-99;
     top:0;
     left:0;
     bottom: 0;
@@ -61,6 +60,7 @@
                         outline: none;
                         cursor: pointer;
                         width: 200px;
+                        height: 60px;
                         color: #1A293C;
                         font-size: 16px;
                         font-weight: bold;
@@ -68,19 +68,40 @@
                         border-radius: 30px;
                         box-shadow: 0px 8px 20px 0px rgba(28, 96, 121, 0.1);
                         background: #FFF;
+                        position: relative;
                     }
-                    .andriod_btn {
+                    .selected_btn {
+                        background: #1A293C;
+                        color:#FFF;
+                    }
+                    .andriod_btn_Con {
+                        .pop_ad_Con {
+                            display: none ;
+                            position: absolute;
+                            bottom: -220px;
+                            left: 0px;
+                            z-index: 999;
+                        }
+                      
                         &:hover {
                             .pop_ad_Con {
                                 display: block;
                             }
                         }
                     }
-                    .selected_btn {
-                        background: #1A293C;
-                        color:#FFF;
+                    .ios_btn_Con {
+                        .pop_ios_Con {
+                            display: none;
+                            position: absolute;
+                            bottom: -220px;
+                            right: 0px;
+                            z-index: 999;
+                        }
+                       
                         &:hover {
-                            
+                            .pop_ios_Con {
+                                display: block;
+                            }
                         }
                     }
                 }
@@ -105,20 +126,7 @@
                         transform: rotate(45deg);
                     }
                 }
-                .pop_ad_Con {
-                    display: none;
-                    position: absolute;
-                    bottom: -220px;
-                    left: 0px;
-                    z-index: 999;
-                }
-                .pop_ios_Con {
-                    display: none;
-                    position: absolute;
-                    bottom: -220px;
-                    right: 0px;
-                    z-index: 999;
-                }
+                
             }
             .des_Con {
                 position: absolute;
@@ -131,19 +139,45 @@
                 font-family: 'Microsoft YaHei';
                 font-weight: 400;
                 color: #1A293C;
-                display: flex;
-                align-items: center;
                 .down_link {
                     text-decoration: none;
                     cursor: pointer;
                     color: #598FE8;
                 }
-                .ques_icon {
+                .ques_Con {
                     width: 18px;
                     height: 18px;
-                    line-height: 18px;
                     margin-left: 11px;
                     cursor: pointer;
+                    display: inline-block;
+                    transform: translateY(-2px);
+                    .pop_links {
+                        display: none;
+                        position: absolute;
+                        top: -70px;
+                        right: -262px;
+                        width: 260px;
+                        text-align: left;
+                        background: #fff;
+                        box-shadow: 0 10px 40px 0 rgb(0 0 0 / 10%);
+                        border-radius: 8px;
+                        padding: 20px 0 20px 20px;
+                        li {
+                            margin-top: 10px;
+                            list-style: none;
+                            font-size: 18px;
+                            a {
+                                cursor: pointer;
+                                color: #598FE8;
+                                text-decoration: none;
+                            }
+                        }
+                    }
+                    &:hover {
+                        .pop_links {
+                            display: block;
+                        }
+                    }
                 }
             }
 
