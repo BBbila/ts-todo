@@ -1,0 +1,39 @@
+.ListPage_Wrap {
+    height: auto;
+    padding: 0;
+    margin: 0;
+    border: 0;
+    .con_ul{
+        width: 100%;
+        li{
+            position: relative;
+            margin-top: 10px;
+            font-size: 18px;
+            font-weight: 700;
+            width: 470px;
+            .content_text {
+                width: 465px;
+                display: block;
+                overflow: hidden;
+                white-space: wrap;
+                text-overflow: ellipsis;
+                -webkit-box-orient: vertical;
+                -webkit-line-clamp: 2;
+            }
+            .view_icon {
+                position: absolute;
+                right: -20px;
+                top: 0;
+                color: rgb(55, 112, 235);
+                margin-top: 5px;
+            }
+            .del_icon {
+                position: absolute;
+                right: -55px;
+                top: 0;
+                color: red;
+                margin-top: 5px;
+            }
+        }
+    }
+}

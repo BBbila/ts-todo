@@ -2,16 +2,12 @@ import React, {useState} from "react";
 import styles from './index.module.scss';
 import List from '../../components/List/List';
 
-export interface ItemProps {
-    index: number;
-    content: string;
-}
 
 const Index = () => {
   const [val, setVal] = useState('');
-  const [addlist, setAddList] = useState<string[]>([]);
-  const [haveViewlist, setHaveViewlist] = useState<string[]>([]);
-  const [isShowView, setIsShowView] = useState(true);
+  const [addList, setAddList] = useState<string[]>([]);
+  const [haveViewList, setHaveViewList] = useState<string[]>([]);
+  const [isShowView] = useState(true);
 
   
   //输入监听
@@ -23,7 +19,7 @@ const Index = () => {
   //添加
   const handleClickAddBtn = () =>{
     if(val !== null && val !== "") {
-      setAddList([...addlist, val]);
+      setAddList([...addList, val]);
     }else {
       alert('内容不能为空!');
     }
@@ -31,24 +27,24 @@ const Index = () => {
   }
 
   return (
-    <div className={styles.indexPageWrap}>
-        <div className="headerCon">TodoList</div>
-        <article className="contentCon">
+    <div className={styles.index_Wrap}>
+        <div className="header_con">TodoList</div>
+        <article className="content_con">
           <div className="content">
-            <input value={val} onChange={(e) => handleVal(e)} style={{width:'85%',height:'30px'}}></input>
-            <button onClick={() => {handleClickAddBtn()}} style={{height:'36px'}}>添加</button>
-            <h3>全部</h3>
+            <input className="input_box" value={val} onChange={(e) => handleVal(e)} ></input>
+            <button className="add_btn" onClick={() => {handleClickAddBtn()}}>添加</button>
+            <div className="separate_mod all_txt">全部</div>
             <List 
-              list={addlist}
+              list={addList}
               setAddList={setAddList} 
               isShowView={isShowView}
-              haveViewlist = {haveViewlist}
-              setHaveViewlist = {setHaveViewlist}
+              haveViewList = {haveViewList}
+              setHaveViewList = {setHaveViewList}
             ></List>
-            <h3>已读</h3>
+            <div className="separate_mod view_txt">已读</div>
             <List 
-              list={haveViewlist}
-              setAddList={setHaveViewlist} 
+              list={haveViewList}
+              setAddList={setHaveViewList} 
               isShowView={false}
             />
           </div>
