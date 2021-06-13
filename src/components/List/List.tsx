@@ -6,25 +6,24 @@ interface IProps  {
     list : Array<string>,
     haveViewList?: Array<string>,
     isShowView: boolean,
-    setAddList: (param: string[]) => void,
-    setHaveViewList?: (param: string[]) => void
+    clickLooked?: Function,
+    clickCancel: Function
 }
 
 const List = (props: IProps) => {
 
+    const {clickLooked, clickCancel} = props;
+
     //已读
-    const handleClickViewBtn = (item: string, index: number) =>{
-        if(props.setHaveViewList && props.haveViewList) {
-            props.setHaveViewList([...props.haveViewList, item]);
+    const handleClickLooked = (item: string, index: number) => {
+        if(clickLooked) {
+            clickLooked(item, index);
         }
-        props.list.splice(index , 1);
-        props.setAddList([...props.list]);
     }
 
     //删除
-    const handleClickCancelBtn = (index: number) =>{
-        props.list.splice(index , 1);
-        props.setAddList([...props.list]);
+    const handleClickCancelBtn = (index: number ,status: boolean) =>{
+        clickCancel(index, status);
     }
 
     return (
@@ -36,12 +35,12 @@ const List = (props: IProps) => {
                         {props.isShowView &&
                         <FolderViewOutlined
                             className="view_icon"
-                            onClick={() => {handleClickViewBtn(item , index)}}
+                            onClick={() => {handleClickLooked(item, index)}}
                         />
                         }
                         <CloseCircleOutlined 
                             className="del_icon"
-                            onClick={() => {handleClickCancelBtn(index)}}
+                            onClick={() => {handleClickCancelBtn(index, props.isShowView)}}
                         />
                     </li>;
                 })}

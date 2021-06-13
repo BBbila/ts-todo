@@ -2,6 +2,10 @@ import React, {useState} from "react";
 import styles from './index.module.scss';
 import List from '../../components/List/List';
 
+interface GroupItems {
+  content: string,
+  type: boolean
+}
 
 const Index = () => {
   const [val, setVal] = useState('');
@@ -26,6 +30,25 @@ const Index = () => {
     setVal('');
   }
 
+  //已读
+  const handleClickViewBtn = (item: string, index: number) =>{
+    setHaveViewList([...haveViewList, item]);
+    addList.splice(index , 1);
+    setAddList([...addList]);
+  }
+
+  //删除
+  const handleClickCancelBtn = (index: number , status: boolean)=>{
+    if(status === true) {
+      addList.splice(index , 1);
+      setAddList([...addList]);
+    }else {
+      haveViewList.splice(index , 1);
+      setHaveViewList([...haveViewList]);
+    }
+    
+  }
+
   return (
     <div className={styles.index_Wrap}>
         <div className="header_con">TodoList</div>
@@ -36,15 +59,14 @@ const Index = () => {
             <div className="separate_mod all_txt">全部</div>
             <List 
               list={addList}
-              setAddList={setAddList} 
               isShowView={isShowView}
-              haveViewList = {haveViewList}
-              setHaveViewList = {setHaveViewList}
+              clickLooked={handleClickViewBtn}
+              clickCancel={handleClickCancelBtn}
             ></List>
             <div className="separate_mod view_txt">已读</div>
             <List 
               list={haveViewList}
-              setAddList={setHaveViewList} 
+              clickCancel={handleClickCancelBtn}
               isShowView={false}
             />
           </div>
